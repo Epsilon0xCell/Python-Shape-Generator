@@ -1,4 +1,4 @@
 ![Banner](banner.png)
 
-# python-shape-gen
+# Python-Shape-Generator
 python-shape-gen.py
