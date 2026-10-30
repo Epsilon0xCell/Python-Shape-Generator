@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python-Shape-Generator - five ASCII shapes, printed as exhibits</title>
+<!-- pages-campaign site for Epsilon0xCell/Python-Shape-Generator; source of truth: Python-Shape-Generator-Website/ on the default branch -->
+<style>
+/* I made this page a gallery because the output is the project. The shapes hang as exhibits with captions, and everything else stays quiet around them. */
+*{box-sizing:border-box}
+body{margin:0;background:#faf8f3;color:#22201c;font-family:Verdana,Geneva,sans-serif}
+.wrap{max-width:1060px;margin:0 auto;padding:34px 22px 60px}
+header{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+header img.logo{width:92px;border:3px solid #22201c}
+h1{font-family:"Trebuchet MS",Verdana,sans-serif;font-size:clamp(30px,5vw,46px);margin:0 0 6px}
+img.banner{width:100%;margin:20px 0;border:3px solid #22201c}
+.badges img{margin:0 5px 5px 0}
+.intro{max-width:720px;line-height:1.7;font-size:15.5px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin:26px 0}
+figure{margin:0;border:1px solid #c9c2b2;background:#fff;padding:18px}
+figure pre{font-family:"Courier New",monospace;font-size:19px;line-height:1.25;background:#22201c;color:#f2e9c9;padding:16px;overflow:auto;min-height:120px}
+figcaption{font-size:13.5px;line-height:1.55;margin-top:10px}
+figcaption b{display:block;font-size:14.5px;margin-bottom:3px}
+h2{font-family:"Trebuchet MS",Verdana,sans-serif;font-size:22px;margin-top:34px}
+p,li{line-height:1.7;font-size:15.5px}
+pre.cmd{background:#efe9da;border-left:5px solid #a33c2a;padding:13px;overflow:auto;font-family:"Courier New",monospace}
+.chip{display:inline-block;background:#22201c;color:#fff;padding:3px 10px;margin:0 5px 5px 0;font-size:13px}
+a{color:#a33c2a}
+footer{border-top:1px solid #c9c2b2;margin-top:36px;padding-top:12px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<img class="logo" src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/logo.png" alt="Python-Shape-Generator logo">
+<div><h1>Python-Shape-Generator</h1><p>Five ASCII shapes drawn in the terminal at a size you pick.</p>
+<div class="badges">
+<img src="https://img.shields.io/github/stars/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Stars">
+<img src="https://img.shields.io/github/forks/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Forks">
+<img src="https://img.shields.io/github/last-commit/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Last commit">
+<img src="https://img.shields.io/github/languages/top/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Top language">
+<img src="https://img.shields.io/github/repo-size/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Repo size">
+<img src="https://img.shields.io/github/license/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="License">
+</div></div>
+</header>
+<img class="banner" src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/banner.png" alt="Python-Shape-Generator banner">
+<div class="intro">
+<h2>What this is</h2>
+<p>I wrote a small stdin-driven script, python-shape-gen.py, that draws one of five shapes and then stops. You type the shape name exactly as listed, then a size.</p>
+<p>Each shape lives in its own draw function and all input lives in main() and read_size(). That split means I can import the file and call draw_diamond(3) on its own, with no prompts in the way.</p>
+<p>The exhibits below are not drawings of the output. They are the output. I ran the script for each shape and copied what it printed.</p>
+</div>
+<h2>The gallery</h2>
+<div class="gallery">
+<figure><pre>@@@
+@@@
+@@@</pre><figcaption><b>Exhibit 1 - Square, side 3</b>Same count for rows and width, so the two cannot drift apart.</figcaption></figure>
+<figure><pre>@@@@@
+@@@@@</pre><figcaption><b>Exhibit 2 - Rectangle, width 5, height 2</b>The fixed rectangle. It asks for width, then height. My first version picked the height at random, which made the result impossible to predict or test.</figcaption></figure>
+<figure><pre>@
+@@
+@@@
+@@@@</pre><figcaption><b>Exhibit 3 - Lower Left Triangle, side 4</b>Row r carries r + 1 marks. The old loop used r alone and started with a blank row. This exhibit is that fix, visible.</figcaption></figure>
+<figure><pre>@@@
+@@
+@</pre><figcaption><b>Exhibit 4 - Upper Left Triangle, side 3</b>The mirror of Exhibit 3. Full width first, one mark off each row.</figcaption></figure>
+<figure><pre>  #
+ ###
+#####
+ ###
+  #</pre><figcaption><b>Exhibit 5 - Diamond, radius 3</b>The only shape drawn with # instead of @. The lower half starts at radius minus 2, or the widest row would print twice. Radius 1 prints a single #.</figcaption></figure>
+</div>
+<h2>Run it</h2>
+<pre class="cmd">python3 python-shape-gen.py</pre>
+<p>Pick one of the five shapes by its exact name (Square, Rectangle, Lower Left Triangle, Upper Left Triangle, Diamond), then give it a size. Rectangle asks for a width and a height; the others ask for one side length or radius.</p>
+<h2>Honest notes</h2>
+<p>A bad size no longer ends the program. Text like abc gets "Please enter a whole number." and a second chance. Closed stdin ends cleanly with no traceback. A bad shape name re-prompts instead of guessing.</p>
+<h2>Stack</h2>
+<p><span class="chip">Python</span><span class="chip">stdin prompts</span><span class="chip">No imports beyond the basics</span></p>
+<p><a href="https://github.com/Epsilon0xCell/Python-Shape-Generator">The repository</a> and <a href="https://github.com/Epsilon0xCell">my GitHub profile</a>.</p>
+<footer>Built by Epsilon0xCell. Gallery captions written from my own runs on 30 October 2026.</footer>
+</div>
+</body>
+</html>
