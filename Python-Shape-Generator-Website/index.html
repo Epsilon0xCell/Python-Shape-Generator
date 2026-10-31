@@ -3,82 +3,238 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Python-Shape-Generator - five ASCII shapes, printed as exhibits</title>
+<title>Python-Shape-Generator: The Geometry Plate</title>
 <!-- pages-campaign site for Epsilon0xCell/Python-Shape-Generator; source of truth: Python-Shape-Generator-Website/ on the default branch -->
 <style>
-/* I made this page a gallery because the output is the project. The shapes hang as exhibits with captions, and everything else stays quiet around them. */
+/* I set this page on graph paper because that is where I first drew shapes like these, in a workbook, with a ruler I did not use. The grid stays faint so the ink does the talking. */
+:root{--paper:#fdfcf6;--ink:#20303a;--grid:#c3d2dc;--gridbig:#a9bfcd;--red:#b3352b;--blue:#2f5d7a;--plate:#fffef9}
 *{box-sizing:border-box}
-body{margin:0;background:#faf8f3;color:#22201c;font-family:Verdana,Geneva,sans-serif}
-.wrap{max-width:1060px;margin:0 auto;padding:34px 22px 60px}
-header{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
-header img.logo{width:92px;border:3px solid #22201c}
-h1{font-family:"Trebuchet MS",Verdana,sans-serif;font-size:clamp(30px,5vw,46px);margin:0 0 6px}
-img.banner{width:100%;margin:20px 0;border:3px solid #22201c}
-.badges img{margin:0 5px 5px 0}
-.intro{max-width:720px;line-height:1.7;font-size:15.5px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin:26px 0}
-figure{margin:0;border:1px solid #c9c2b2;background:#fff;padding:18px}
-figure pre{font-family:"Courier New",monospace;font-size:19px;line-height:1.25;background:#22201c;color:#f2e9c9;padding:16px;overflow:auto;min-height:120px}
-figcaption{font-size:13.5px;line-height:1.55;margin-top:10px}
-figcaption b{display:block;font-size:14.5px;margin-bottom:3px}
-h2{font-family:"Trebuchet MS",Verdana,sans-serif;font-size:22px;margin-top:34px}
-p,li{line-height:1.7;font-size:15.5px}
-pre.cmd{background:#efe9da;border-left:5px solid #a33c2a;padding:13px;overflow:auto;font-family:"Courier New",monospace}
-.chip{display:inline-block;background:#22201c;color:#fff;padding:3px 10px;margin:0 5px 5px 0;font-size:13px}
-a{color:#a33c2a}
-footer{border-top:1px solid #c9c2b2;margin-top:36px;padding-top:12px;font-size:13px}
+body{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),linear-gradient(var(--gridbig) 1px,transparent 1px),linear-gradient(90deg,var(--gridbig) 1px,transparent 1px);background-size:28px 28px,28px 28px,140px 140px,140px 140px}
+.page{max-width:1080px;margin:0 auto;padding:36px 26px 64px 58px;border-left:2px solid rgba(179,53,43,.55)}
+.margin-note{color:var(--red);font-family:"Courier New",monospace;font-size:13px;line-height:1.5}
+header.top{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+header.top img.logo{width:96px;height:auto;border:1px solid var(--ink);background:var(--plate)}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:2px 0 8px;font-weight:normal}
+.sub{font-size:17px;line-height:1.55;max-width:620px;margin:0 0 12px}
+.badges img{margin:0 6px 6px 0;vertical-align:middle}
+img.banner{width:100%;height:auto;display:block;margin:22px 0 8px;border:1px solid var(--ink)}
+.banner-cap{font-size:13px;color:#4a5a63;margin:0 0 10px}
+h2{font-size:25px;font-weight:normal;margin:0 0 12px;border-bottom:1px solid var(--ink);padding-bottom:6px}
+h2 .no{color:var(--red);font-family:"Courier New",monospace;font-size:19px;margin-right:10px}
+p,li{font-size:16px;line-height:1.7}
+.chapter{margin-top:44px;max-width:760px}
+.chapter.wide{max-width:none}
+a{color:var(--blue)}
+/* I gave each plate a different width and offset because figures in a workbook sit where the page needs them, not in matching boxes. */
+figure.plate{margin:34px 0;background:var(--plate);border:1px solid var(--ink);padding:20px 22px 14px;position:relative}
+figure.plate::before{content:"";position:absolute;top:-9px;left:18px;right:18px;border-top:2px solid rgba(179,53,43,.6)}
+figure.plate pre{font-family:"Courier New",monospace;font-size:21px;line-height:1.3;margin:4px 0 10px;white-space:pre;overflow-x:auto;color:var(--ink)}
+figure.plate figcaption{font-size:14px;line-height:1.6;border-top:1px dotted #7a8a93;padding-top:9px}
+figure.plate figcaption .fig{color:var(--red);font-family:"Courier New",monospace;font-weight:bold}
+figure.plate figcaption code{font-family:"Courier New",monospace;font-size:13px;background:#eef3f0;padding:1px 4px}
+.p1{max-width:360px}
+.p2{max-width:560px;margin-left:auto}
+.p3{max-width:400px;margin-left:70px}
+.p4{max-width:400px;margin-left:210px}
+.p5{max-width:480px;margin-left:120px}
+.with-note{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap}
+.with-note .side{max-width:300px;padding-top:40px}
+pre.code,pre.run{background:#20303a;color:#f3ecd8;font-family:"Courier New",monospace;font-size:13.5px;line-height:1.55;padding:16px 18px;overflow-x:auto;white-space:pre}
+pre.code .ln{color:#e08a80}
+.sheets{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start;margin-top:20px}
+.sheets figure{margin:0;background:var(--plate);border:1px solid #7a8a93;padding:12px}
+.sheets figure img{width:100%;height:auto;display:block}
+.sheets figcaption{font-size:13.5px;line-height:1.55;padding-top:9px}
+.sheets figcaption b{color:var(--red);font-family:"Courier New",monospace;font-weight:bold}
+.s-a{flex:1 1 460px}.s-b{flex:1 1 320px;margin-top:36px}.s-c{flex:1 1 380px}.s-d{flex:1 1 300px;margin-top:22px}.s-e{flex:1 1 440px}.s-f{flex:1 1 330px;margin-top:30px}
+ul.plain{padding-left:20px}
+footer{border-top:2px solid rgba(179,53,43,.55);margin-top:52px;padding-top:14px;font-size:14px;line-height:1.6}
+/* I fade the chapters in plainly as they arrive. Nothing slides or spins. Reading order is the only choreography here. */
+.js-fade{opacity:0;transition:opacity .6s ease}
+.js-fade.seen{opacity:1}
+@media (max-width:640px){.page{padding:24px 16px 48px 22px}.p3,.p4,.p5{margin-left:0}figure.plate pre{font-size:17px}.s-b,.s-d,.s-f{margin-top:0}}
+@media (prefers-reduced-motion: reduce){.js-fade{opacity:1;transition:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
+<div class="page">
+<header class="top">
 <img class="logo" src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/logo.png" alt="Python-Shape-Generator logo">
-<div><h1>Python-Shape-Generator</h1><p>Five ASCII shapes drawn in the terminal at a size you pick.</p>
+<div>
+<h1>Python-Shape-Generator</h1>
+<p class="sub">One small Python file, python-shape-gen.py, that prints five shapes in the terminal at a size I pick. This page is the workbook sheet for it: the shapes are printed below as plates, with the text of the chapter running alongside.</p>
 <div class="badges">
-<img src="https://img.shields.io/github/stars/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Stars">
-<img src="https://img.shields.io/github/forks/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Forks">
-<img src="https://img.shields.io/github/last-commit/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Last commit">
-<img src="https://img.shields.io/github/languages/top/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Top language">
-<img src="https://img.shields.io/github/repo-size/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="Repo size">
-<img src="https://img.shields.io/github/license/Epsilon0xCell/Python-Shape-Generator?style=flat-square&color=a33c2a" alt="License">
-</div></div>
+<img src="https://img.shields.io/github/stars/Epsilon0xCell/Python-Shape-Generator?style=flat-square&amp;color=b3352b" alt="Stars">
+<img src="https://img.shields.io/github/forks/Epsilon0xCell/Python-Shape-Generator?style=flat-square&amp;color=b3352b" alt="Forks">
+<img src="https://img.shields.io/github/last-commit/Epsilon0xCell/Python-Shape-Generator?style=flat-square&amp;color=b3352b" alt="Last commit">
+<img src="https://img.shields.io/github/languages/top/Epsilon0xCell/Python-Shape-Generator?style=flat-square&amp;color=b3352b" alt="Top language">
+<img src="https://img.shields.io/github/repo-size/Epsilon0xCell/Python-Shape-Generator?style=flat-square&amp;color=b3352b" alt="Repo size">
+<img src="https://img.shields.io/github/license/Epsilon0xCell/Python-Shape-Generator?style=flat-square&amp;color=b3352b" alt="License GPL-3.0">
+</div>
+</div>
 </header>
 <img class="banner" src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/banner.png" alt="Python-Shape-Generator banner">
-<div class="intro">
-<h2>What this is</h2>
-<p>I wrote a small stdin-driven script, python-shape-gen.py, that draws one of five shapes and then stops. You type the shape name exactly as listed, then a size.</p>
-<p>Each shape lives in its own draw function and all input lives in main() and read_size(). That split means I can import the file and call draw_diamond(3) on its own, with no prompts in the way.</p>
-<p>The exhibits below are not drawings of the output. They are the output. I ran the script for each shape and copied what it printed.</p>
-</div>
-<h2>The gallery</h2>
-<div class="gallery">
-<figure><pre>@@@
-@@@
-@@@</pre><figcaption><b>Exhibit 1 - Square, side 3</b>Same count for rows and width, so the two cannot drift apart.</figcaption></figure>
-<figure><pre>@@@@@
-@@@@@</pre><figcaption><b>Exhibit 2 - Rectangle, width 5, height 2</b>The fixed rectangle. It asks for width, then height. My first version picked the height at random, which made the result impossible to predict or test.</figcaption></figure>
-<figure><pre>@
+<p class="banner-cap">The repo banner, shown at the top of the sheet the way a workbook prints its chapter heading picture.</p>
+<section class="chapter">
+<h2><span class="no">Ch. 1</span>What this is</h2>
+<p>I wrote this to draw shapes out of text characters in a terminal. I run it, I type the name of one of five shapes exactly as the program lists it, and I give it a size. It prints the shape and stops. There is no window, no file output, and no import in the file at all.</p>
+<p>The five names are Square, Rectangle, Lower Left Triangle, Upper Left Triangle, and Diamond. Four of them draw with the @ character. The diamond draws with #, a split that was in my first version and that I kept on purpose, so a diamond stands out from the rest of the page.</p>
+<p>Each shape has its own draw function, and all of the asking happens in main() and in read_size(). That split matters to me: I can import the file and call draw_diamond(3) on its own, and no prompt gets in the way.</p>
+<p class="margin-note">Margin note: the plates in Chapter 2 are not drawings of the output. They are the output, copied line for line from my runs on this head.</p>
+</section>
+<section class="chapter wide">
+<h2><span class="no">Ch. 2</span>The five plates</h2>
+<p>Each plate is captioned with the exact command that produced it and the head it came from, 504640b. The shape lines inside each plate are what the program printed, with the spaces kept.</p>
+<figure class="plate p1">
+<pre class="plate-pre">@@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@</pre>
+<figcaption><span class="fig">Fig. 1</span> Square, side 5. One number sets both the row count and the row width, so the two cannot drift apart. Command: <code>printf 'Square\n5\n' | python3 python-shape-gen.py</code> at head 504640b.</figcaption>
+</figure>
+<figure class="plate p2">
+<pre class="plate-pre">@@@@@@@
+@@@@@@@
+@@@@@@@</pre>
+<figcaption><span class="fig">Fig. 2</span> Rectangle, width 7 and height 3. This is the only shape that asks two questions. My first version picked the height at random, so the shape on screen had little to do with what I typed. It asks now. Command: <code>printf 'Rectangle\n7\n3\n' | python3 python-shape-gen.py</code> at head 504640b.</figcaption>
+</figure>
+<div class="with-note">
+<figure class="plate p3">
+<pre class="plate-pre">@
 @@
 @@@
-@@@@</pre><figcaption><b>Exhibit 3 - Lower Left Triangle, side 4</b>Row r carries r + 1 marks. The old loop used r alone and started with a blank row. This exhibit is that fix, visible.</figcaption></figure>
-<figure><pre>@@@
-@@
-@</pre><figcaption><b>Exhibit 4 - Upper Left Triangle, side 3</b>The mirror of Exhibit 3. Full width first, one mark off each row.</figcaption></figure>
-<figure><pre>  #
- ###
-#####
- ###
-  #</pre><figcaption><b>Exhibit 5 - Diamond, radius 3</b>The only shape drawn with # instead of @. The lower half starts at radius minus 2, or the widest row would print twice. Radius 1 prints a single #.</figcaption></figure>
+@@@@
+@@@@@
+@@@@@@</pre>
+<figcaption><span class="fig">Fig. 3</span> Lower Left Triangle, side 6. Row r carries r + 1 marks, so the first row is a single @. Command: <code>printf 'Lower Left Triangle\n6\n' | python3 python-shape-gen.py</code> at head 504640b.</figcaption>
+</figure>
+<div class="side"><p class="margin-note">Construction note, in red because this one cost me a bug: my first loop here used r on its own. Every row shifted down by one and the plate opened with a blank row. Fig. 3 is that fix, visible. Check it against lines 77 to 78 in Chapter 3.</p></div>
 </div>
-<h2>Run it</h2>
-<pre class="cmd">python3 python-shape-gen.py</pre>
-<p>Pick one of the five shapes by its exact name (Square, Rectangle, Lower Left Triangle, Upper Left Triangle, Diamond), then give it a size. Rectangle asks for a width and a height; the others ask for one side length or radius.</p>
-<h2>Honest notes</h2>
-<p>A bad size no longer ends the program. Text like abc gets "Please enter a whole number." and a second chance. Closed stdin ends cleanly with no traceback. A bad shape name re-prompts instead of guessing.</p>
-<h2>Stack</h2>
-<p><span class="chip">Python</span><span class="chip">stdin prompts</span><span class="chip">No imports beyond the basics</span></p>
+<figure class="plate p4">
+<pre class="plate-pre">@@@@@@
+@@@@@
+@@@@
+@@@
+@@
+@</pre>
+<figcaption><span class="fig">Fig. 4</span> Upper Left Triangle, side 6. The mirror of Fig. 3 at the same size, so the two line up: full width first, one mark off each row, a single @ last. Command: <code>printf 'Upper Left Triangle\n6\n' | python3 python-shape-gen.py</code> at head 504640b.</figcaption>
+</figure>
+<figure class="plate p5">
+<pre class="plate-pre">Creating Diamond
+   #
+  ###
+ #####
+#######
+ #####
+  ###
+   #</pre>
+<figcaption><span class="fig">Fig. 5</span> Diamond, radius 4. The program prints the words Creating Diamond before this shape and no other. Each row holds 2 * row + 1 marks, and the spaces in front do the centering. Command: <code>printf 'Diamond\n4\n' | python3 python-shape-gen.py</code> at head 504640b.</figcaption>
+</figure>
+</section>
+<section class="chapter">
+<h2><span class="no">Ch. 3</span>Lines from the file, checked</h2>
+<p>I copied these excerpts straight from python-shape-gen.py at head 504640b. The numbers on the left are the line numbers in that file.</p>
+<p>The list I have to spell exactly. Lines 12 to 13:</p>
+<pre class="code"><span class="ln">12</span>  CHOICES = [&quot;Square&quot;, &quot;Rectangle&quot;, &quot;Lower Left Triangle&quot;,
+<span class="ln">13</span>             &quot;Upper Left Triangle&quot;, &quot;Diamond&quot;]</pre>
+<p>The lower left triangle, with the off by one fix in it. Lines 77 to 78:</p>
+<pre class="code"><span class="ln">77</span>      for row in range(size):
+<span class="ln">78</span>          print(&quot;@&quot; * (row + 1))</pre>
+<p>A size of 0 or less gets refused and asked again. Lines 43 to 49:</p>
+<pre class="code"><span class="ln">43</span>          if value &lt; 1:
+<span class="ln">44</span>              # I reject 0 and negative sizes here. A size of 0 would draw
+<span class="ln">45</span>              # nothing and look like a silent failure, so I say so and ask
+<span class="ln">46</span>              # again instead.
+<span class="ln">47</span>              print(&quot;Please enter 1 or more.&quot;)
+<span class="ln">48</span>              continue
+<span class="ln">49</span>          return value</pre>
+<p>The diamond lower half, which starts at radius minus 2 so the widest row prints once. Lines 98 to 106:</p>
+<pre class="code"><span class="ln">98</span>      for row in range(radius):
+<span class="ln">99</span>          print(&quot; &quot; * (radius - row - 1) + &quot;#&quot; * (2 * row + 1))
+<span class="ln">100</span>      # I start the lower half at radius - 2, not radius - 1. Radius - 1 is
+<span class="ln">101</span>      # the middle row, and the loop above already printed it. If I started
+<span class="ln">102</span>      # here at radius - 1, the widest row would print twice.
+<span class="ln">103</span>      # Edge case I checked: radius 1 makes this second range empty, and
+<span class="ln">104</span>      # the whole diamond is just the single &quot;#&quot; from the first loop.
+<span class="ln">105</span>      for row in range(radius - 2, -1, -1):
+<span class="ln">106</span>          print(&quot; &quot; * (radius - row - 1) + &quot;#&quot; * (2 * row + 1))</pre>
+</section>
+<section class="chapter">
+<h2><span class="no">Ch. 4</span>One full run, as printed</h2>
+<p>So the plates above can be checked in context, here is a complete run for Fig. 1, prompts and all, exactly as it came off the terminal. The first row of the square sits on the same line as the last prompt because the prompt does not end with a newline. That is how the program prints, so that is how I show it.</p>
+<pre class="run">Welcome to the shape maker!
+Choose a type of shape from the following list: 
+[&#x27;Square&#x27;, &#x27;Rectangle&#x27;, &#x27;Lower Left Triangle&#x27;, &#x27;Upper Left Triangle&#x27;, &#x27;Diamond&#x27;]
+&gt; Side length:
+&gt; @@@@@
+@@@@@
+@@@@@
+@@@@@
+@@@@@</pre>
+<p>Run it yourself from the repo root:</p>
+<pre class="run">python3 python-shape-gen.py</pre>
+<ul class="plain">
+<li>Type a shape name exactly as listed. A close spelling gets: Invalid choice please enter correctly, and I ask again.</li>
+<li>Text for a size, such as abc or 3.5, gets: Please enter a whole number.</li>
+<li>Closing the input at a prompt ends the program cleanly, with no traceback.</li>
+<li>Radius 1 for the diamond prints a single # and nothing else.</li>
+</ul>
+</section>
+<section class="chapter wide">
+<h2><span class="no">Ch. 5</span>The drawn sheets</h2>
+<p>These six sheets live in the Python-Shape-Generator-Visuals folder in the repo. They are the project hand-drawn sheets: architecture, data flow, flowchart, product map, schematic, and statistics, drawn from the files in this repo. I set them into the workbook here as drawn figures, at different sizes, the way the plates are set.</p>
+<div class="sheets">
+<figure class="s-a"><img src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/Python-Shape-Generator-Visuals/architecture.png" alt="Architecture sheet for Python-Shape-Generator"><figcaption><b>Sheet A.</b> Architecture. The put together view: how the one file and its parts sit.</figcaption></figure>
+<figure class="s-b"><img src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/Python-Shape-Generator-Visuals/flowchart.png" alt="Flowchart sheet for Python-Shape-Generator"><figcaption><b>Sheet B.</b> Flowchart. The run, from the entry point through the prompts to the printed shape.</figcaption></figure>
+<figure class="s-c"><img src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/Python-Shape-Generator-Visuals/data-flow.png" alt="Data flow sheet for Python-Shape-Generator"><figcaption><b>Sheet C.</b> Data flow. A typed name and a size go in one end, printed rows come out the other.</figcaption></figure>
+<figure class="s-d"><img src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/Python-Shape-Generator-Visuals/product-map.png" alt="Product map sheet for Python-Shape-Generator"><figcaption><b>Sheet D.</b> Product map. What the project is for, what goes in, what comes out, and where it stops.</figcaption></figure>
+<figure class="s-e"><img src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/Python-Shape-Generator-Visuals/schematic.png" alt="Schematic sheet for Python-Shape-Generator"><figcaption><b>Sheet E.</b> Schematic. The second drawn diagram in the set, kept with the rest of the sheets.</figcaption></figure>
+<figure class="s-f"><img src="https://raw.githubusercontent.com/Epsilon0xCell/Python-Shape-Generator/main/Python-Shape-Generator-Visuals/statistics.png" alt="Statistics sheet for Python-Shape-Generator"><figcaption><b>Sheet F.</b> Statistics. The counts for this repo, drawn as bars that can be checked against the files.</figcaption></figure>
+</div>
+</section>
+<section class="chapter">
+<h2><span class="no">Ch. 6</span>Where to read the code</h2>
+<p>The whole program is the one file, python-shape-gen.py, 167 lines at this head. The draw functions sit at lines 52 to 106, the size prompt at lines 16 to 49, and main() at lines 109 to 161.</p>
 <p><a href="https://github.com/Epsilon0xCell/Python-Shape-Generator">The repository</a> and <a href="https://github.com/Epsilon0xCell">my GitHub profile</a>.</p>
-<footer>Built by Epsilon0xCell. Gallery captions written from my own runs on 30 October 2026.</footer>
+</section>
+<footer>Built by Epsilon0xCell. Plates printed from runs at head 504640b. Sheet set down on 31 October 2026.</footer>
 </div>
+<script>
+/* I wrote this print reveal by hand for this page. A plate should arrive the way the program prints it, line by line from the top, once, and then stay put. If a reader has JavaScript off, the plates are already complete in the markup, because I only split a plate apart after I know this script is running. */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var chapters = document.querySelectorAll(".chapter");
+  chapters.forEach(function (ch) { ch.classList.add("js-fade"); });
+  var fade = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("seen"); fade.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  chapters.forEach(function (ch) { fade.observe(ch); });
+  if (reduce) { chapters.forEach(function (ch) { ch.classList.add("seen"); }); return; }
+  var plates = document.querySelectorAll(".plate-pre");
+  plates.forEach(function (pre) {
+    var lines = pre.textContent.split("\n");
+    pre.textContent = "";
+    var spans = lines.map(function (line) {
+      var s = document.createElement("span");
+      s.textContent = line;
+      s.style.display = "block";
+      s.style.opacity = "0";
+      pre.appendChild(s);
+      return s;
+    });
+    pre._spans = spans;
+  });
+  var printer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) { return; }
+      printer.unobserve(e.target);
+      var spans = e.target._spans || [];
+      spans.forEach(function (s, i) { setTimeout(function () { s.style.opacity = "1"; }, 70 * i); });
+    });
+  }, { threshold: 0.35 });
+  plates.forEach(function (pre) { printer.observe(pre); });
+})();
+</script>
 </body>
 </html>
