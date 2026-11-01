@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-label="The gelato case from the front: shelf jars glinting in turn, pozzetti lids opening in rotation, a spatula crossing the pistachio pan, a shape assembling in a cleared tray, mist wiped from the glass">
+<rect width="1200" height="340" fill="#f2ecdc"/>
+<g stroke="#c9c4ae" stroke-width="2">
+<path d="M0,60 H1200 M0,120 H1200"/>
+</g>
+<g fill="#dfe3e3" stroke="#8f9296" stroke-width="2">
+<rect x="120" y="18" width="34" height="34"/><rect x="220" y="18" width="34" height="34"/><rect x="320" y="18" width="34" height="34"/><rect x="420" y="18" width="34" height="34"/>
+</g>
+<g fill="#fff6c8">
+<circle cx="137" cy="35" r="6"><animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite"/></circle>
+<circle cx="237" cy="35" r="6"><animate attributeName="opacity" values="0;1;0" dur="8s" begin="2s" repeatCount="indefinite"/></circle>
+<circle cx="337" cy="35" r="6"><animate attributeName="opacity" values="0;1;0" dur="8s" begin="4s" repeatCount="indefinite"/></circle>
+<circle cx="437" cy="35" r="6"><animate attributeName="opacity" values="0;1;0" dur="8s" begin="6s" repeatCount="indefinite"/></circle>
+</g>
+<g fill="#c6c9cc" stroke="#8f9296" stroke-width="2">
+<g>
+<ellipse cx="700" cy="86" rx="52" ry="16"/>
+<animateTransform attributeName="transform" type="rotate" values="0 652 86; -16 652 86; 0 652 86; 0 652 86" keyTimes="0;0.15;0.3;1" dur="10s" repeatCount="indefinite"/>
+</g>
+<g>
+<ellipse cx="880" cy="86" rx="52" ry="16"/>
+<animateTransform attributeName="transform" type="rotate" values="0 832 86; -16 832 86; 0 832 86; 0 832 86" keyTimes="0;0.15;0.3;1" dur="10s" begin="3.3s" repeatCount="indefinite"/>
+</g>
+<g>
+<ellipse cx="1060" cy="86" rx="52" ry="16"/>
+<animateTransform attributeName="transform" type="rotate" values="0 1012 86; -16 1012 86; 0 1012 86; 0 1012 86" keyTimes="0;0.15;0.3;1" dur="10s" begin="6.6s" repeatCount="indefinite"/>
+</g>
+</g>
+<g>
+<rect x="80" y="140" width="430" height="120" fill="#a8d68a" stroke="#8f9296" stroke-width="3"/>
+<g stroke="#79b45e" stroke-width="7">
+<path d="M110,180 H480 M110,214 H480 M110,248 H480">
+<animate attributeName="stroke-dasharray" values="370;300;370" dur="9s" repeatCount="indefinite"/>
+</path>
+</g>
+<g>
+<rect x="150" y="128" width="20" height="66" fill="#8a6a42"/>
+<polygon points="128,194 192,194 184,238 136,238" fill="#e4e6e8" stroke="#8f9296" stroke-width="2"/>
+<animateTransform attributeName="transform" type="translate" values="0,0; 240,0; 0,0" dur="9s" repeatCount="indefinite"/>
+</g>
+<rect x="560" y="140" width="300" height="120" fill="#f4f1e6" stroke="#8f9296" stroke-width="3"/>
+<g fill="#33261c" font-family="monospace" font-size="21">
+<text x="660" y="176">@<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="8s" repeatCount="indefinite"/></text>
+<text x="648" y="202">@@<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.2;0.3;0.85;1" dur="8s" repeatCount="indefinite"/></text>
+<text x="636" y="228">@@@<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.4;0.5;0.85;1" dur="8s" repeatCount="indefinite"/></text>
+<text x="624" y="254">@@@@<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6;0.7;0.85;1" dur="8s" repeatCount="indefinite"/></text>
+</g>
+<rect x="910" y="140" width="230" height="120" fill="#6e462c" stroke="#8f9296" stroke-width="3"/>
+<g stroke="#8a5a38" stroke-width="7"><path d="M940,180 H1110 M940,214 H1110"/></g>
+</g>
+<g>
+<rect y="286" width="1200" height="54" fill="#eae5d8"/>
+<g fill="#eef6f8" opacity="0.65">
+<ellipse cx="120" cy="330" rx="90" ry="14"><animate attributeName="opacity" values="0.65;0;0.65" dur="13s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="1080" cy="330" rx="90" ry="14"><animate attributeName="opacity" values="0.65;0;0.65" dur="13s" begin="4s" repeatCount="indefinite"/></ellipse>
+</g>
+<g>
+<polygon points="0,296 54,290 60,314 6,320" fill="#faf8f2" stroke="#c9c4ae" stroke-width="2"/>
+<animateTransform attributeName="transform" type="translate" values="-80,0; 1240,0" dur="13s" repeatCount="indefinite"/>
+</g>
+<g>
+<polygon points="60,286 92,286 76,330" fill="#d8b074" stroke="#aa8450" stroke-width="2"/>
+<animateTransform attributeName="transform" type="rotate" values="0 76 286; 4 76 286; 0 76 286" dur="6s" repeatCount="indefinite"/>
+</g>
+</g>
+</svg>
